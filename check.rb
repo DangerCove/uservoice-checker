@@ -32,8 +32,8 @@ sites.each do |key, site|
         loc = `which terminal-notifier`.strip
         `#{loc} -title #{site["domain"]} -group uservoice -message "Open tickets: #{open_tickets}\n#{open_ticket_ids}" -notify com.apple.safari -open http://#{site["domain"]}.uservoice.com`
       elsif command?("growlnotify")
-        loc = `which terminal-notifier`.strip
-        `#{loc} -t #{site["domain"]} -m "Open tickets: #{open_tickets}\n#{open_ticket_ids}"`
+        loc = `which growlnotify`.strip
+        `#{loc} -m "Tickets #{site["domain"]}: #{open_tickets}\n#{open_ticket_ids}"`
       else
         output += "#{site["domain"]}: #{open_tickets} #{open_ticket_ids}\n"
       end
